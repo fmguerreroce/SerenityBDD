@@ -9,7 +9,7 @@ Feature: Realizar una compra
     Then debería visualizar la página "Products"
 
   @ESC01_COMPRAA
-  Scenario Outline: Validar que se realice una compra de manera exitosa
+  Scenario Outline: Validar que se realice una compra de manera exitosaa
     When agrega los siguientes productos a la cesta
       | producto1   | producto2   | producto3   |
       | <producto1> | <producto2> | <producto3> |
