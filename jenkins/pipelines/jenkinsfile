@@ -2,7 +2,18 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'TAGS', defaultValue: '', description: 'Cucumber tags')
+        choice(
+            name: 'TAGS',
+            choices: [
+                '',
+                '@ESC01_COMPRAA',
+                '@ESC02_LOGIN',
+                '@ESC03_PAGO',
+                '@REGRESION',
+                '@SMOKE'
+            ],
+            description: 'Seleccione el tag de Cucumber (vacío = todos)'
+        )
     }
 
     stages {
@@ -45,9 +56,23 @@ pipeline {
         }
     }
 
- post {
-     always {
-         junit 'target/failsafe-reports/*.xml'
-     }
- }
+    post {
+        always {
+            junit 'target/failsafe-reports/*.xml'
+
+            emailext(
+                subject: "Resultado Ejecución Serenity - ${currentBuild.currentResult}",
+                body: """
+                <h2>Resultado de la ejecución</h2>
+                <p><b>Estado:</b> ${currentBuild.currentResult}</p>
+                <p><b>Tag ejecutado:</b> ${params.TAGS ?: 'Todos'}</p>
+                <p>Ver reporte completo en Jenkins:</p>
+                <a href="${env.BUILD_URL}Serenity_Report/">Abrir Reporte Serenity</a>
+                """,
+                to: "florguerreroceballos@gmail.com",
+                mimeType: 'text/html'
+            )
+        }
+    }
 }
+
