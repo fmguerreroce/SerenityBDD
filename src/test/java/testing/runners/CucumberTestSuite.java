@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty"},
         features = "src/test/resources/features",
         glue = "testing.stepdefinition",
-        tags = "@ESC01_COMPRAA"
+        tags = "@ORDEN_PRECIO_ASC"
 )
 public class CucumberTestSuite {
     // Clase vacía siguiendo el estándar

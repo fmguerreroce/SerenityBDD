@@ -3,6 +3,7 @@ package testing.stepdefinition.web;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
 import testing.model.web.ModeloDatos;
 import testing.model.web.ModeloProductos;
@@ -83,5 +84,4 @@ public class CompraStepDefinition {
         System.out.println("El mensaje exitoso " + mensaje);
 
     }
-
 }

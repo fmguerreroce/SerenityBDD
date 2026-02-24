@@ -35,4 +35,9 @@ public class CompraUI {
             .located(By.id("finish"));
     public static Target VALIDACION_MENSAJE = Target.the("Username")
             .located(By.xpath("//h2[contains(@class,'complete-header')]"));
+
+
+    //FILTRO
+    public static Target FILTROS_PRODUCTOS = Target.the("Username")
+            .located(By.xpath("//select[@class='product_sort_container']"));
 }

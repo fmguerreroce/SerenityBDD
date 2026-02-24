@@ -27,3 +27,14 @@ Feature: Realizar una compra
       | producto1           | producto2             | producto3         | firstName | lastName | postalCode | precioTotal | Mensaje                    |
       | Sauce Labs Backpack | Sauce Labs Bike Light | Sauce Labs Onesie | Flor      | Guerrero | 123456     | Price Total | Thank you for your order!  |
 
+
+  @ORDEN_PRECIO_ASC
+  Scenario Outline: Ordenar productos por precio ascendente
+    When When selecciona el filtro "<Precio: menor a mayor>"
+    Then los productos se muestran ordenados por precio de forma ascendente
+    Examples:
+    |Precio: menor a mayor |
+    |Price (low to high)   |
+
+
+
