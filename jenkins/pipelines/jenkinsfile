@@ -72,10 +72,5 @@ parameters {
         }
     }
 
-    post {
-        always {
-            junit 'target/failsafe-reports/*.xml'
-        }
-    }
 }
 
