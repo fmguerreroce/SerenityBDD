@@ -1,21 +1,30 @@
 pipeline {
     agent any
 
-    parameters {
-        choice(
-            name: 'TAGS',
-            choices: [
-                '',
-                '@ESC01_COMPRAA',
-                '@ESC02_LOGIN',
-                '@ESC03_PAGO',
-                '@REGRESION',
-                '@SMOKE'
-            ],
-            description: 'Seleccione el tag de Cucumber (vacío = todos)'
-        )
-    }
+parameters {
 
+    choice(
+        name: 'features',
+        choices: [
+            '',
+            'web'
+        ],
+        description: 'Seleccione carpeta de features (vacio = todas)'
+    )
+
+    choice(
+        name: 'TAGS',
+        choices: [
+            '',
+            '@ESC01_COMPRAA',
+            '@ESC02_LOGIN',
+            '@ESC03_PAGO',
+            '@REGRESION',
+            '@SMOKE'
+        ],
+        description: 'Seleccione el tag de Cucumber (vacio = todos)'
+    )
+}
     stages {
 
         stage('Checkout') {
