@@ -4,7 +4,7 @@ pipeline {
 parameters {
 
     choice(
-        name: 'features',
+        name: 'FEATURE_FOLDER',
         choices: [
             '',
             'web'
@@ -36,11 +36,18 @@ parameters {
         stage('Clean & Test') {
             steps {
                 script {
-                    if (params.TAGS?.trim()) {
-                        bat "mvn clean verify -Dcucumber.filter.tags=${params.TAGS}"
-                    } else {
-                        bat "mvn clean verify"
+
+                    def command = "mvn clean verify"
+
+                    if (params.FEATURE_FOLDER?.trim()) {
+                        command += " -Dcucumber.features=src/test/resources/features/${params.FEATURE_FOLDER}"
                     }
+
+                    if (params.TAGS?.trim()) {
+                        command += " -Dcucumber.filter.tags=${params.TAGS}"
+                    }
+
+                    bat command
                 }
             }
         }
