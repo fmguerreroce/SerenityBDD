@@ -75,19 +75,6 @@ parameters {
     post {
         always {
             junit 'target/failsafe-reports/*.xml'
-
-            emailext(
-                subject: "Resultado Ejecución Serenity - ${currentBuild.currentResult}",
-                body: """
-                <h2>Resultado de la ejecución</h2>
-                <p><b>Estado:</b> ${currentBuild.currentResult}</p>
-                <p><b>Tag ejecutado:</b> ${params.TAGS ?: 'Todos'}</p>
-                <p>Ver reporte completo en Jenkins:</p>
-                <a href="${env.BUILD_URL}Serenity_Report/">Abrir Reporte Serenity</a>
-                """,
-                to: "florguerreroceballos@gmail.com",
-                mimeType: 'text/html'
-            )
         }
     }
 }
