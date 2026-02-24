@@ -17,7 +17,7 @@ parameters {
         choices: [
             '',
             '@ESC01_COMPRAA',
-            '@ESC02_LOGIN',
+            '@ORDEN_PRECIO_ASC',
             '@ESC03_PAGO',
             '@REGRESION',
             '@SMOKE'
