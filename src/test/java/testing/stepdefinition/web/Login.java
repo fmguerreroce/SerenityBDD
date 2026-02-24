@@ -39,7 +39,7 @@ public class Login {
 
     }
 
-    @Then("debería ver {string}")
+    @Then("debería visualizar la página {string}")
     public void deberíaVer(String resultado) {
         OnStage.theActorInTheSpotlight().should(
                 seeThat(loginq.GetDescription(), equalTo(resultado))

@@ -20,7 +20,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class CompraStepDefinition {
 
-    @And("agredo los productos a la cesta")
+    @And("agrega los siguientes productos a la cesta")
     public void agredoLosProductosALaCesta(DataTable dataTable) {
         theActorInTheSpotlight().attemptsTo(
                 ProductosTask.onTheSite(ModeloProductos.setData(dataTable).get(0))
@@ -28,21 +28,22 @@ public class CompraStepDefinition {
 
     }
 
-    @And("le doy click en el icono de carrito")
+    @And("accede al carrito de compras")
     public void leDoyClickEnElIconoDe() {
         theActorInTheSpotlight().attemptsTo(
                 ClickElement.sobre(CompraUI.BTN_CAR)
         );
     }
 
-    @And("le doy click en el boton checkout")
+    @And("inicia el proceso de checkout")
     public void leDoyClickEnElBoton() {
+
         theActorInTheSpotlight().attemptsTo(
         ClickElement.sobre(CompraUI.BTN_CHECKOUT)
         );
     }
 
-    @And("lleno el formulario con los datos")
+    @And("completa el formulario con los datos")
     public void llenoElFormularioConLosDatos(DataTable dataTable) {
         theActorInTheSpotlight().attemptsTo(
         LlenarDatosTask.onTheSite(ModeloDatos.setData(dataTable).get(0))
@@ -50,14 +51,14 @@ public class CompraStepDefinition {
 
     }
 
-    @And("le doy click en el boton continue")
+    @And("continúa con la compra")
     public void leDoyClickEnElBotonContinue() {
         theActorInTheSpotlight().attemptsTo(
       ClickElement.sobre(CompraUI.BTN_CONTINUE)
         );
     }
 
-    @And("valido que se muestre el resumen del {string}")
+    @And("debería visualizar el resumen con el total {string}")
     public void validoQueSeMuestreElResumenDelPrecioTotal(String precioTotal) {
 
         theActorInTheSpotlight().should(
@@ -66,15 +67,14 @@ public class CompraStepDefinition {
         );
     }
 
-
-    @And("doy click en el boton finalizar")
+    @And("finaliza la compra")
     public void doyClickEnElBotonFinalizar() {
         theActorInTheSpotlight().attemptsTo(
      ClickElement.sobre(CompraUI.BTN_FINALIZAR)
 );
     }
 
-    @And("Valido el mensaje exitoso {string}")
+    @And("debería visualizar el mensaje exitoso {string}")
     public void validoElMensajeExitosoMensaje(String mensaje) {
 
         OnStage.theActorInTheSpotlight().should(
