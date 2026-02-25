@@ -17,10 +17,9 @@ parameters {
         choices: [
             '',
             '@ESC01_COMPRAA',
-            '@ORDEN_PRECIO_ASC',
-            '@ESC03_PAGO',
-            '@REGRESION',
-            '@SMOKE'
+            '@ESC02_ORDEN_PRECIO_ASC',
+            '@ESC03_CASO_NEGATIVO'
+
         ],
         description: 'Seleccione el tag de Cucumber (vacio = todos)'
     )

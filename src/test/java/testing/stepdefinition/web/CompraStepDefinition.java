@@ -84,4 +84,9 @@ public class CompraStepDefinition {
         System.out.println("El mensaje exitoso " + mensaje);
 
     }
+
+    @When("ingresa sus credenciales invalidas")
+    public void ingresaSusCredencialesInvalidas() {
+
+    }
 }
