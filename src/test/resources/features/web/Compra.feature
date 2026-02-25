@@ -43,8 +43,8 @@ Feature: Realizar una compra
         |<username>|<password>|
       Then debería visualizar la página "<Mensaje>"
         Examples:
-         |Mensaje                                                                  |
-         |Epic sadface: Username and password do not match any user in this service|
+         |||Mensaje                                                                  |
+         |||Epic sadface: Username and password do not match any user in this service|
 
 
 
