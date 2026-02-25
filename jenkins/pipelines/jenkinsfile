@@ -7,7 +7,7 @@ parameters {
         name: 'FEATURE_FOLDER',
         choices: [
             '',
-            'web'
+            'web',
             'login'
         ],
         description: 'Seleccione carpeta de features (vacio = todas)'
@@ -20,7 +20,7 @@ parameters {
             '@ESC01_COMPRAA',
             '@ESC02_ORDEN_PRECIO_ASC',
             '@ESC03_CASO_NEGATIVO',
-            '@ESCENARIO1',
+            '@ESCENARIO1'
 
         ],
         description: 'Seleccione el tag de Cucumber (vacio = todos)'
