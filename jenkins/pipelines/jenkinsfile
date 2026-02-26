@@ -1,64 +1,76 @@
 pipeline {
     agent any
 
-parameters {
+    //Trigger automático con webhook de GitHub
+    triggers {
+        githubPush() // Requiere configurar webhook en el repo
+    }
 
-    choice(
-        name: 'FEATURE_FOLDER',
-        choices: [
-            '',
-            'web',
-            'login'
-        ],
-        description: 'Seleccione carpeta de features (vacio = todas)'
-    )
+    //Parámetros para ejecución selectiva de features y tags
+    parameters {
+        choice(
+            name: 'FEATURE_FOLDER',
+            choices: [
+                '',
+                'web',
+                'login'
+            ],
+            description: 'Seleccione carpeta de features (vacio = todas)'
+        )
 
-    choice(
-        name: 'TAGS',
-        choices: [
-            '',
-            '@ESC01_COMPRAA',
-            '@ESC02_ORDEN_PRECIO_ASC',
-            '@ESC03_CASO_NEGATIVO',
-            '@ESCENARIO1'
+        choice(
+            name: 'TAGS',
+            choices: [
+                '',
+                '@ESC01_COMPRAA',
+                '@ESC02_ORDEN_PRECIO_ASC',
+                '@ESC03_CASO_NEGATIVO',
+                '@ESCENARIO1'
+            ],
+            description: 'Seleccione el tag de Cucumber (vacio = todos)'
+        )
+    }
 
-        ],
-        description: 'Seleccione el tag de Cucumber (vacio = todos)'
-    )
-}
     stages {
 
+        //Checkout del código
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/fmguerreroce/SerenityBDD.git'
             }
         }
 
+        //Limpiar y ejecutar pruebas
         stage('Clean & Test') {
             steps {
                 script {
-
+                    // Comando base Maven
                     def command = "mvn clean verify"
 
-                    if (params.FEATURE_FOLDER?.trim()) {
+                    // Si se especifica carpeta, la agregamos
+                    if (params.FEATURE_FOLDER && params.FEATURE_FOLDER != '') {
                         command += " -Dcucumber.features=src/test/resources/features/${params.FEATURE_FOLDER}"
                     }
 
-                    if (params.TAGS?.trim()) {
+                    //Si se especifica tag, lo agregamos
+                    if (params.TAGS && params.TAGS != '') {
                         command += " -Dcucumber.filter.tags=${params.TAGS}"
                     }
 
+                    // Ejecuta el comando en Windows (bat)
                     bat command
                 }
             }
         }
 
+        //Generación de reporte Serenity
         stage('Generate Serenity Report') {
             steps {
                 bat "mvn serenity:aggregate"
             }
         }
 
+        //Publicación del reporte HTML en Jenkins
         stage('Publish Serenity Report') {
             steps {
                 publishHTML([
@@ -73,5 +85,13 @@ parameters {
         }
     }
 
+    //Post-actions para notificaciones
+    post {
+        success {
+            echo "Build y pruebas completadas correctamente"
+        }
+        failure {
+            echo "Build o pruebas fallaron"
+        }
+    }
 }
-

@@ -46,4 +46,18 @@ public class Login {
         );
     }
 
+    @When("ingresa sus credenciales invalidas")
+    public void ingresaSusCredencialesInvalidas(DataTable dataTable) {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                LoginUser.onTheSite(Modelo.setData(dataTable).get(0))
+        );
+
+    }
+
+    @Then("debería visualizar el mensaje de error {string}")
+    public void deberíaVisualizarElMensajeDeError(String mensaje) {
+        OnStage.theActorInTheSpotlight().should(
+                seeThat(loginq.GetValidationCredencial(), equalTo(mensaje))
+        );
+    }
 }

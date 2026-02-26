@@ -15,4 +15,12 @@ public class loginq {
                                 .getText()
                 );
     }
+    public static Question<String> GetValidationCredencial(){
+        return Question.about("Texto de validación")
+                .answeredBy(actor ->
+                        LoginUI.VALIDACION_CREDENCIALES
+                                .resolveFor(actor)
+                                .getText()
+                );
+    }
 }

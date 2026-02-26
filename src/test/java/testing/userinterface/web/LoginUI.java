@@ -12,6 +12,8 @@ public class LoginUI {
             .located(By.id("login-button"));
     public static Target VALIDACION = Target.the("Validacion")
             .located(By.xpath("//span[@class='title']"));
+    public static Target VALIDACION_CREDENCIALES = Target.the("Validacion")
+            .located(By.xpath("//h3[contains(text(),'Epic sadface')]"));
 
 
 

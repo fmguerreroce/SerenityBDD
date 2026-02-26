@@ -5,10 +5,12 @@ import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
+import testing.model.web.Modelo;
 import testing.model.web.ModeloDatos;
 import testing.model.web.ModeloProductos;
 import testing.question.web.CompraQuestion;
 import testing.question.web.loginq;
+import testing.task.web.LoginUser;
 import testing.task.web.ProductosTask;
 import testing.task.web.LlenarDatosTask;
 import testing.task.web.elementosRepetitivos.ClickElement;
@@ -85,8 +87,4 @@ public class CompraStepDefinition {
 
     }
 
-    @When("ingresa sus credenciales invalidas")
-    public void ingresaSusCredencialesInvalidas() {
-
-    }
 }

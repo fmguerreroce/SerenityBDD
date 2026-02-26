@@ -1,3 +1,4 @@
+@COMPRAS
 Feature: Realizar una compra
   Como usuario de la pagina web
   Quiero marcar productos
@@ -5,8 +6,8 @@ Feature: Realizar una compra
 
   Background:
     Given el usuario navega a la página de login
-    When ingresa sus credenciales válidas
-    Then debería visualizar la página "Products"
+#    When ingresa sus credenciales válidas
+#    Then debería visualizar la página "Products"
 
   @ESC01_COMPRAA
   Scenario Outline: Validar que se realice una compra de manera exitosaa
@@ -24,27 +25,17 @@ Feature: Realizar una compra
     Then debería visualizar el mensaje exitoso "<Mensaje>"
 
     Examples:
-      | producto1           | producto2             | producto3         | firstName | lastName | postalCode | precioTotal | Mensaje                    |
-      | Sauce Labs Backpack | Sauce Labs Bike Light | Sauce Labs Onesie | Flor      | Guerrero | 123456     | Price Total | Thank you for your order!  |
+      | producto1           | producto2             | producto3         | firstName | lastName | postalCode | precioTotal | Mensaje                   |
+      | Sauce Labs Backpack | Sauce Labs Bike Light | Sauce Labs Onesie | Flor      | Guerrero | 123456     | Price Total | Thank you for your order! |
 
 
-    @ORDEN_PRECIO_ASC
-      Scenario Outline: Ordenar productos por precio ascendente
-       When When selecciona el filtro "<Precio: menor a mayor>"
-       Then los productos se muestran ordenados por precio de forma ascendente
-       Examples:
-        |Precio: menor a mayor |
-        |Price (low to high)   |
-
-      @ESC03_CASO_NEGATIVO
-      Scenario Outline: Validar que se muestre un mensaje de error
-      When ingresa sus credenciales invalidas
-        | username | password |
-        |<username>|<password>|
-      Then debería visualizar la página "<Mensaje>"
-        Examples:
-         |||Mensaje                                                                  |
-         |||Epic sadface: Username and password do not match any user in this service|
+  @ORDEN_PRECIO_ASC
+  Scenario Outline: Ordenar productos por precio ascendente
+    When When selecciona el filtro "<Precio: menor a mayor>"
+    Then los productos se muestran ordenados por precio de forma ascendente
+    Examples:
+      | Precio: menor a mayor |
+      | Price (low to high)   |
 
 
 
