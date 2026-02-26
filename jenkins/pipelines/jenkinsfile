@@ -24,8 +24,8 @@ pipeline {
                 '',
                 '@ESC01_COMPRAA',
                 '@ESC02_ORDEN_PRECIO_ASC',
-                '@ESC03_CASO_NEGATIVO',
-                '@ESCENARIO1'
+                '@ESC01_CP_POSITIVO',
+                '@ESC02_CP_NEGATIVO'
             ],
             description: 'Seleccione el tag de Cucumber (vacio = todos)'
         )

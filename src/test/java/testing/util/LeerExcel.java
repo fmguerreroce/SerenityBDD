@@ -1,10 +1,8 @@
 package testing.util;
 
 import org.apache.poi.ss.usermodel.*;
-import testing.model.LoginModel;
-import testing.model.web.Modelo2;
+import testing.model.web.ModeloExcel;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.util.*;
 
@@ -12,9 +10,9 @@ public class LeerExcel {
 
     private LeerExcel() {}
 
-    public static List<Modelo2> readLoginData(String path, String sheetName) {
+    public static List<ModeloExcel> readLoginData(String path, String sheetName) {
 
-        List<Modelo2> users = new ArrayList<>();
+        List<ModeloExcel> users = new ArrayList<>();
 
         try (FileInputStream file = new FileInputStream(path);
              Workbook workbook = WorkbookFactory.create(file)) {
@@ -28,7 +26,7 @@ public class LeerExcel {
                 String usuario = row.getCell(0).getStringCellValue();
                 String password = row.getCell(1).getStringCellValue();
 
-                users.add(new Modelo2(usuario, password));
+                users.add(new ModeloExcel(usuario, password));
             }
 
         } catch (Exception e) {

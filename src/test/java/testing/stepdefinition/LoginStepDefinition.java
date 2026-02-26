@@ -51,24 +51,5 @@ public class LoginStepDefinition {
 
     }
 
-    @And("selecciono el")
-    public void seleccionoElPais(DataTable dataTable) {
-        OnStage.theActorInTheSpotlight().attemptsTo(
-                Login.onTheSite(LoginModel.setData(dataTable).get(0)));
-              //  System.out.println("El país es: " + (LoginModel.setData(dataTable).get(0));
-                // Debug
-
-
-
-
-    }
-
-    @And("^valido el nombre el pais filtrado (.*)")
-    public void validoElNombreElPaisFiltradoNombreFiltrado() {
-
-
-    }
-
-
 }
 

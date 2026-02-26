@@ -18,43 +18,49 @@ public class ProductosTask implements Task {
     public ProductosTask(ModeloProductos modeloCompra) {
         this.modeloCompra = modeloCompra;
     }
+
     public static ProductosTask onTheSite(ModeloProductos modeloCompra) {
         return instrumented(ProductosTask.class, modeloCompra);
     }
+
     @Override
     public <T extends Actor> void performAs(T actor) {
-        String NombreActual = Text.of(CompraUI.PRODUCTO1)
+        String NombreActual1 = Text.of(CompraUI.PRODUCTO1)
                 .answeredBy(actor);
         String NombreActual2 = Text.of(CompraUI.PRODUCTO2)
                 .answeredBy(actor);
         String NombreActual3 = Text.of(CompraUI.PRODUCTO3)
                 .answeredBy(actor);
 
-        if (NombreActual.equals(modeloCompra.getProducto1())){
+        // PRODUCTO 1
+        if (NombreActual1.equals(modeloCompra.getProducto1())) {
+            actor.attemptsTo(
+                    WaitUntil.the(ADD_CAR1, isVisible()).forNoMoreThan(5).seconds(),
+                    Click.on(ADD_CAR1)
+            );
+        } else {
+            System.out.println("Producto 1 no coincide, no se agrega.");
+        }
 
-                actor.attemptsTo(
-                        WaitUntil.the(ADD_CAR1, isVisible()).forNoMoreThan(5).seconds(),
-                        Click.on(ADD_CAR1)
+        // PRODUCTO 2
+        if (NombreActual2.equals(modeloCompra.getProducto2())) {
+            actor.attemptsTo(
+                    WaitUntil.the(ADDCAR2, isVisible()).forNoMoreThan(5).seconds(),
+                    Click.on(ADDCAR2)
+            );
+        } else {
+            System.out.println("Producto 2 no coincide, no se agrega.");
+        }
 
-
-                );
-            }if (NombreActual2.equals(modeloCompra.getProducto2())) {
-                actor.attemptsTo(
-                        WaitUntil.the(ADDCAR2, isVisible()).forNoMoreThan(5).seconds(),
-                        Click.on(ADDCAR2)
-                );
-            }if (NombreActual3.equals(modeloCompra.getProducto3())) {
+        // PRODUCTO 3
+        if (NombreActual3.equals(modeloCompra.getProducto3())) {
             actor.attemptsTo(
                     WaitUntil.the(ADDCAR3, isVisible()).forNoMoreThan(5).seconds(),
                     Click.on(ADDCAR3)
             );
-
-
         } else {
-            System.out.println("El producto no coincide. No se agrega al carrito.");
+            System.out.println("Producto 3 no coincide, no se agrega.");
         }
-
-
     }
 }
 

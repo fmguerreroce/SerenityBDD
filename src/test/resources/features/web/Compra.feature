@@ -9,7 +9,7 @@ Feature: Realizar una compra
     When ingresa sus credenciales válidas
     Then debería visualizar la página "Products"
 
-  @ESC01_COMPRAA
+  @ESC01_COMPRA
   Scenario Outline: Validar que se realice una compra de manera exitosaa
     When agrega los siguientes productos a la cesta
       | producto1   | producto2   | producto3   |

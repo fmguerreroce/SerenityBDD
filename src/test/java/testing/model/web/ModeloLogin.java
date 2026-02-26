@@ -2,22 +2,21 @@ package testing.model.web;
 
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.datatable.DataTable;
-import testing.model.LoginModel;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Modelo {
+public class ModeloLogin {
     private String username;
     private String password;
     private String resultado;
 
-    public static List<Modelo> setData(DataTable table) {
-        List<Modelo> data = new ArrayList<>();
+    public static List<ModeloLogin> setData(DataTable table) {
+        List<ModeloLogin> data = new ArrayList<>();
         List<Map<String, String>> mapList = table.asMaps();
         for (Map<String, String> map : mapList) {
-            data.add(new ObjectMapper().convertValue(map, Modelo.class));
+            data.add(new ObjectMapper().convertValue(map, ModeloLogin.class));
         }
         return data;
 
