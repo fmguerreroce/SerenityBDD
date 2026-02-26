@@ -3,7 +3,7 @@ pipeline {
 
     //Trigger automático con webhook de GitHub
     triggers {
-        githubPush() // Requiere configurar webhook en el repo
+        githubPush() // configurar webhook en el repo
     }
 
     //Parámetros para ejecución selectiva de features y tags

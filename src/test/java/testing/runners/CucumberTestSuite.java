@@ -1,17 +1,22 @@
 
 package testing.runners;
-import io.cucumber.junit.CucumberOptions;
-import net.serenitybdd.cucumber.CucumberWithSerenity;
-import org.junit.runner.RunWith;
 
-@RunWith(CucumberWithSerenity.class)
-@CucumberOptions(
-        plugin = {"pretty"},
-        features = "src/test/resources/features",
-        glue = "testing.stepdefinition",
-        tags = "@ESC03_CASO_NEGATIVO"
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
+
+import static io.cucumber.junit.platform.engine.Constants.*;
+
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("features/web")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "testing.stepdefinition")
+@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@ESC01_COMPRAA")
+@ConfigurationParameter(
+        key = PLUGIN_PROPERTY_NAME,
+        value = "pretty, io.cucumber.core.plugin.SerenityReporterParallel"
 )
 public class CucumberTestSuite {
-    // Clase vacía siguiendo el estándar
 }
 

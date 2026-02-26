@@ -6,8 +6,8 @@ Feature: Realizar una compra
 
   Background:
     Given el usuario navega a la página de login
-#    When ingresa sus credenciales válidas
-#    Then debería visualizar la página "Products"
+    When ingresa sus credenciales válidas
+    Then debería visualizar la página "Products"
 
   @ESC01_COMPRAA
   Scenario Outline: Validar que se realice una compra de manera exitosaa
