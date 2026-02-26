@@ -14,6 +14,8 @@ public class LoginUI {
             .located(By.xpath("//span[@class='title']"));
     public static Target VALIDACION_CREDENCIALES = Target.the("Validacion")
             .located(By.xpath("//h3[contains(text(),'Epic sadface')]"));
+    public static final Target LISTA_PRECIOS = Target.the("lista de precios")
+            .locatedBy("//div[@class='inventory_item_price']");
 
 
 
